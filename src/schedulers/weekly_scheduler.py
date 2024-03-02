@@ -1,5 +1,3 @@
-# scheduling.py
-
 import schedule
 import time
 from service import helpers
