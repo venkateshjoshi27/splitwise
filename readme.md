@@ -8,6 +8,10 @@ Splitwise App is a backend application designed to facilitate expense sharing am
 
 ![Workflow Diagram](workflow.png)
 
+## Database Design
+
+![Database Design](splitwise-db.png)
+
 ## API Contracts
 
 ### User Registration
@@ -66,6 +70,22 @@ Splitwise App is a backend application designed to facilitate expense sharing am
 2. Expenses can be added using the `/expenses` endpoint by specifying the amount, type, and participants.
 3. Balances can be viewed using the `/balances` endpoint, which provides balances data for the user.
 4. Email notifications are sent asynchronously for expense updates, and a scheduled job sends weekly emails containing the total amount owed by each user.
+
+## Expense Table
+
+![Expense Table](expense-table.png)
+
+## Users Table
+
+![Users Table](users-table.png)
+
+## Expense Participant Table
+
+![Expense Table](expense-participant-table.png)
+
+## Email Table
+
+![Email Table](email-table.png)
 
 ## Database Schema
 
