@@ -73,7 +73,7 @@ Splitwise App is a backend application designed to facilitate expense sharing am
 
 ## Expense Table
 
-![Expense Table](expense-table.png)
+![Expense Table](expenses-table.png)
 
 ## Users Table
 
@@ -81,7 +81,7 @@ Splitwise App is a backend application designed to facilitate expense sharing am
 
 ## Expense Participant Table
 
-![Expense Table](expense-participant-table.png)
+![Expense Table](expenses-participants-table.png)
 
 ## Email Table
 
