@@ -1,0 +1,48 @@
+@startuml
+!define TABLE_BORDER_STYLE single
+!define TABLE_HEADER_BACKGROUND_COLOR LightBlue
+!define TABLE_ROW_BACKGROUND_COLOR PaleTurquoise
+
+package "Splitwise" {
+    entity "User" {
+        + user_id: integer
+        --
+        name: string
+        email: string
+        mobile_number: string
+    }
+
+    entity "Expense" {
+        + expense_id: integer
+        --
+        user_id: integer
+        amount: float
+        expense_type: string
+        total_shares: integer
+        created_at: datetime
+        notes: text
+    }
+
+    entity "ExpenseParticipant" {
+        + participant_id: integer
+        --
+        expense_id: integer
+        user_id: integer
+        share_amount: float
+    }
+
+    entity "EmailQueue" {
+        + id: integer
+        --
+        recipient_email: string
+        subject: string
+        body: string
+        sent_at: datetime
+        is_sent: boolean
+    }
+
+    User ||--o{ Expense
+    Expense ||--o{ ExpenseParticipant
+}
+
+@enduml

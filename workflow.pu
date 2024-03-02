@@ -1,0 +1,64 @@
+@startuml
+participant User as U
+participant API as A
+participant Backend as B
+participant Database as DB
+participant EmailService as E
+
+== User Registration ==
+
+U -> A: POST /users\n(name, email, mobile)
+A -> B: Create User\nin DB
+B -> DB: Save User\nData
+DB --> B: User Saved\nSuccessfully
+B --> A: User Created\nSuccessfully
+A --> U: 201 Created\nUser Created\nSuccessfully
+A --> E: Asynchronous Task\n(Send Email)\nUser Registration\nSuccess Email
+
+== Add Expense ==
+
+U -> A: POST /expenses\n(amount, type, participants)
+A -> B: Create Expense\nin DB
+B -> DB: Save Expense\nData
+DB --> B: Expense Saved\nSuccessfully
+B --> A: Expense Created\nSuccessfully
+A --> U: 201 Created\nExpense Created\nSuccessfully
+A --> E: Asynchronous Task\n(Send Email)\nNew Expense\nNotification Email
+
+== Display Balances ==
+
+U -> A: GET /balances
+A -> B: Retrieve Transactions\nfrom DB
+B -> DB: Query Database\nfor Transactions
+DB --> B: Transactions Retrieved\nSuccessfully
+B --> A: Transactions Data
+A --> U: Balances Data
+
+== Email Sending Task ==
+
+E -> Backend: Execute Task\n(Send Email)
+Backend -> EmailService: Send Email\n(Notification)
+EmailService -> U: Email Sent\nSuccessfully
+
+== Error Handling ==
+
+group User Registration Errors
+    alt User Already Exists
+        A --> U: 400 Bad Request\nUser Already Exists
+    end
+end
+
+group Add Expense Errors
+    alt User Not Found
+        A --> U: 400 Bad Request\nUser Not Found
+    else Invalid Expense Type
+        A --> U: 400 Bad Request\nInvalid Expense Type
+    end
+end
+
+group Display Balances Errors
+    alt Expense Not Found
+        A --> U: 404 Not Found\nExpense Not Found
+    end
+end
+@enduml
