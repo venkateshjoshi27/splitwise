@@ -1,0 +1,152 @@
+# Create Users
+curl -X 'POST' \
+  'http://localhost:8000/users' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "mobile_number": "1234567890"
+}'
+
+curl -X 'POST' \
+  'http://localhost:8000/users' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Jane Smith",
+  "email": "jane.smith@example.com",
+  "mobile_number": "9876543210"
+}'
+
+
+curl -X 'POST' \
+  'http://localhost:8000/users' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Alice Johnson",
+  "email": "alice.johnson@example.com",
+  "mobile_number": "5554443333"
+}'
+
+
+curl -X 'POST' \
+  'http://localhost:8000/users' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Bob Brown",
+  "email": "bob.brown@example.com",
+  "mobile_number": "7778889999"
+}'
+
+
+# Creating Expense
+curl -X 'POST' \
+  'http://localhost:8000/expenses' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "lender_id": 1,
+  "total_amount": 100.0,
+  "expense_type": "EQUAL",
+  "participants": [
+    {
+      "user_id": 2,
+      "share": 25.0
+    },
+    {
+      "user_id": 3,
+      "share": 25.0
+    },
+    {
+      "user_id": 4,
+      "share": 25.0
+    },
+    {
+      "user_id": 5,
+      "share": 25.0
+    }
+  ],
+  "expense_name": "Lunch",
+  "notes": "Team lunch meeting"
+}'
+
+
+curl -X 'POST' \
+  'http://localhost:8000/expenses' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "lender_id": 2,
+  "total_amount": 50.0,
+  "expense_type": "EXACT",
+  "participants": [
+    {"user_id": 1, "share": 20.0},
+    {"user_id": 3, "share": 10.0},
+    {"user_id": 4, "share": 15.0},
+    {"user_id": 5, "share": 5.0}
+  ],
+  "expense_name": "Exact Expense",
+  "notes": "Exact expense distribution"
+}'
+
+
+curl -X 'POST' \
+  'http://localhost:8000/expenses' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "lender_id": 3,
+  "total_amount": 200.0,
+  "expense_type": "PERCENT",
+  "participants": [
+    {"user_id": 1, "share": 20.0},
+    {"user_id": 2, "share": 30.0},
+    {"user_id": 4, "share": 25.0},
+    {"user_id": 5, "share": 25.0}
+  ],
+  "expense_name": "Percent Expense",
+  "notes": "Expense distribution based on percentages"
+}'
+
+
+curl -X 'POST' \
+  'http://localhost:8000/expenses' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "lender_id": 5,
+  "total_amount": 80.0,
+  "expense_type": "EXACT",
+  "participants": [
+    {"user_id": 1, "share": 25.0},
+    {"user_id": 2, "share": 15.0},
+    {"user_id": 3, "share": 20.0},
+    {"user_id": 4, "share": 20.0}
+  ],
+  "expense_name": "Exact Expense 4 Users",
+  "notes": "Exact expense distribution among 4 users"
+}'
+
+
+# Balances
+curl -X 'GET' \
+  'http://localhost:8000/balances?simplify=false' \
+  -H 'accept: application/json'
+
+curl -X 'GET' \
+  'http://localhost:8000/balances?simplify=true' \
+  -H 'accept: application/json'
+
+curl -X 'GET' \
+  'http://localhost:8000/balances/1' \
+  -H 'accept: application/json'
+
+
+curl -X 'GET' \
+  'http://localhost:8000/balances/lender/1' \
+  -H 'accept: application/json'
+
+
